@@ -71,33 +71,33 @@
   # List packages installed in system profile. To search, run:
   #$ nix search wget
   environment.systemPackages = with pkgs; [ 
-bitwarden
-btop
-cmus    
-curl
-feh
-firefox
-git
-htop
-lutris
-minigalaxy
-mpv
-neofetch
-nextcloud-client
-onlykey
-protonup-ng
-protonup-qt
-protontricks
-ranger
-spotify
-steam
-thunderbird 
-vim
-wget
-winetricks    	
-wineWowPackages.stable
-yubioath-flutter
-zathura	
+	bitwarden
+	btop
+	cmus    
+	curl
+	feh
+	firefox
+	git
+	htop
+	lutris
+	minigalaxy
+	mpv
+	neofetch
+	nextcloud-client
+	onlykey
+	protonup-ng
+	protonup-qt
+	protontricks
+	ranger
+	spotify
+	steam
+	thunderbird 
+	vim
+	wget
+	winetricks    	
+	wineWowPackages.stable
+	yubioath-flutter
+	zathura	
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
