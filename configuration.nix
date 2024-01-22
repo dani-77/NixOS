@@ -8,7 +8,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-	  # Include https://github.com/NixOS/nixos-hardware.git for a Lenovo Legion Y530
+	# Include https://github.com/NixOS/nixos-hardware.git for a Lenovo Legion Y530
       <nixos-hardware/lenovo/legion/15ich>
       ./hardware-configuration.nix
   ];
