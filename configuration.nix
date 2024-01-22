@@ -8,19 +8,17 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+	  # Include https://github.com/NixOS/nixos-hardware.git for a Lenovo Legion Y530
       <nixos-hardware/lenovo/legion/15ich>
       ./hardware-configuration.nix
   ];
-  # Use the systemd-boot EFI boot loader.
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
+  # Use the Grub2 EFI boot loader.
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true; 
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # Wireless network (add network profile for user)
+  networking.hostName = "loki"; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
@@ -62,44 +60,44 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dani77 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "network" ]; # Enable ‘sudo’ for the user.
-    # packages = with pkgs; [
-     #  firefox
-      # thunderbird
+    extraGroups = [ "wheel" "network" ]; 
+    # packages = with pkgs; [ firefox
     # ];
   };
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   #$ nix search wget
   environment.systemPackages = with pkgs; [ 
-	firefox 
-	thunderbird 
-	ranger
- 	vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
- 	wget
-	curl
-	nextcloud-client
-	yubioath-flutter
-	steam
-	spotify
-	onlykey
 	bitwarden
-	neofetch
-	htop
-	btop
-	wineWowPackages.stable
-	winetricks
-	minigalaxy
-	lutris
-	protonup-qt
-	protonup-ng
-	protontricks
+    btop
+    cmus    
+    curl
 	feh
-	cmus
-	mpv
-	zathura
-	ueberzug
-	git
+    firefox
+    git
+    htop
+    lutris
+    minigalaxy
+    mpv
+    neofetch
+    nextcloud-client
+    onlykey
+    protonup-ng
+	protonup-qt
+	protontricks
+	ranger
+	spotify
+	steam
+	thunderbird 
+	vim
+ 	wget
+    winetricks    	
+    wineWowPackages.stable
+	yubioath-flutter
+	zathura	
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -112,10 +110,12 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
+  # Enable the OpenSSH daemon, flatpak and pcscd.
   services.openssh.enable = true;
-  nixpkgs.config.allowUnfree = true;
   services.flatpak.enable = true;
+  services.pcscd.enable = true;
+
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
