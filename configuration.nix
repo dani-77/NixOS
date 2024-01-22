@@ -4,21 +4,21 @@
 
 { config, lib, pkgs, ... }:
 
+
 {
   imports =
     [ # Include the results of the hardware scan.
+      <nixos-hardware/lenovo/legion/15ich>
       ./hardware-configuration.nix
-    ];
+  ];
+  # Use the systemd-boot EFI boot loader.
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.useOSProber = true; 
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/nvme0n1"; # or "nodev" for efi only
-
-  networking.hostName = "lt1000"; # Define your hostname.
+  # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -34,22 +34,20 @@
   i18n.defaultLocale = "pt_PT.UTF-8";
   console = {
   #   font = "Lat2-Terminus16";
-    keyMap = "pt-latin1";
+     keyMap = "es";
   #   useXkbConfig = true; # use xkb.options in tty.
   };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.setupCommands = ''
-${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode "1920x1080"
-'';
+  services.xserver.desktopManager.plasma5.enable = true;
+
   
+
   # Configure keymap in X11
-  services.xserver.xkb.layout = "pt";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+  services.xserver.xkb.layout = "es";
+  services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -63,29 +61,49 @@ ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode "1920x1080"
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dani77 = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [ ];
+    isNormalUser = true;
+    extraGroups = [ "wheel" "network" ]; # Enable ‘sudo’ for the user.
+    # packages = with pkgs; [
+     #  firefox
+      # thunderbird
+    # ];
   };
 
   # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [ steam firefox thunderbird ranger feh cmus mpv htop nextcloud-client st dmenu (st.overrideAttrs (oldAttrs: rec { 
-	patches = [
-     (fetchpatch { 
-	url = "http://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff";
-	sha256 = "10gvwnpbjw49212k25pddji08f4flal0g9rkwpvkay56w8y81r22";
-	})
-      (fetchpatch { 
- 	url = "http://st.suckless.org/patches/dracula/st-dracula-0.8.5.diff";
-	sha256 = "0ldy43y2xa8q54ci6ahxa3iimfb4hmjsbclkmisx0xjr88nazzhz";
-	})	
-    ];
-  }))
-];
+  #$ nix search wget
+  environment.systemPackages = with pkgs; [ 
+	firefox 
+	thunderbird 
+	ranger
+ 	vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+ 	wget
+	curl
+	nextcloud-client
+	yubioath-flutter
+	steam
+	spotify
+	onlykey
+	bitwarden
+	neofetch
+	htop
+	btop
+	wineWowPackages.stable
+	winetricks
+	minigalaxy
+	lutris
+	protonup-qt
+	protonup-ng
+	protontricks
+	feh
+	cmus
+	mpv
+	zathura
+	ueberzug
+  ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
+  programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -95,26 +113,9 @@ ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode "1920x1080"
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  nixpkgs.config = {
-  allowUnfree = true;
-};
-  services.flatpak.enable = true;  
-  services.pcscd.enable = true;
-  services.compton.enable = true;
-  #services.picom = {
-#		enable = true;
-#		backend = "glx";
-#		fade = true;
-#		settings = {
-#			blur = { 
-#				method = "dual_kawase";
- #   			        size = 20;
-  # 			 	deviation = 5.0;
-  #			};
-#		};
-#		inactiveOpacity = 0.8;
-#	};
-# Open ports in the firewall.
+  nixpkgs.config.allowUnfree = true;
+  services.flatpak.enable = true;
+  # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
@@ -142,5 +143,6 @@ ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode "1920x1080"
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "23.11"; # Did you read the comment?
-
+  system.autoUpgrade.enable = true;
 }
+
