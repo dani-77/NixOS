@@ -75,14 +75,24 @@
   # List packages installed in system profile. To search, run:
   #$ nix search wget
   environment.systemPackages = with pkgs; [ 
-	bitwarden
+	abiword
+    bitwarden
 	btop
 	cmus    
 	curl
+    ethtool
 	feh
 	firefox
+    flashrom
 	git
+    github-desktop
+    gnumeric
 	htop
+    hunspell
+    hunspellDicts.pt_PT
+    hw-probe
+    inxi
+    jstest-gtk
 	lutris
 	minigalaxy
 	mpv
@@ -93,13 +103,17 @@
 	protonup-qt
 	protontricks
 	ranger
+    scribus
+    smartmontools
 	spotify
 	steam
-	thunderbird 
+	thunderbird
+    vifm
 	vim
 	wget
 	winetricks    	
 	wineWowPackages.stable
+    xboxdrv
 	yubioath-flutter
 	zathura	
   ];
