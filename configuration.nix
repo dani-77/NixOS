@@ -76,23 +76,23 @@
   #$ nix search wget
   environment.systemPackages = with pkgs; [ 
 	abiword
-    bitwarden
+	bitwarden
 	btop
 	cmus    
 	curl
-    ethtool
+	ethtool
 	feh
 	firefox
-    flashrom
+	flashrom
 	git
-    github-desktop
-    gnumeric
+	github-desktop
+	gnumeric
 	htop
-    hunspell
-    hunspellDicts.pt_PT
-    hw-probe
-    inxi
-    jstest-gtk
+	hunspell
+	hunspellDicts.pt_PT
+	hw-probe
+	inxi
+	jstest-gtk
 	lutris
 	minigalaxy
 	mpv
@@ -103,17 +103,17 @@
 	protonup-qt
 	protontricks
 	ranger
-    scribus
-    smartmontools
+	scribus
+	smartmontools
 	spotify
 	steam
 	thunderbird
-    vifm
+	vifm
 	vim
 	wget
 	winetricks    	
 	wineWowPackages.stable
-    xboxdrv
+	xboxdrv
 	yubioath-flutter
 	zathura	
   ];
