@@ -95,6 +95,7 @@
 	jstest-gtk
 	lutris
 	minigalaxy
+	minitube        
 	mpv
 	neofetch
 	nextcloud-client
@@ -107,6 +108,7 @@
 	smartmontools
 	spotify
 	steam
+	surf        
 	thunderbird
 	vifm
 	vim
@@ -114,6 +116,8 @@
 	winetricks    	
 	wineWowPackages.stable
 	xboxdrv
+	youtube-tui
+	youtube-dl        
 	yubioath-flutter
 	zathura	
   ];
