@@ -1,6 +1,6 @@
 # NixOS
 
-My config files for NixOS.
+My config files for NixOS, tonybtw style.
 
 Included a Wallpaper to be placed in ~/.background-image
 
