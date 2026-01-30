@@ -8,3 +8,7 @@ For specific hardware see this repo at https://github.com/NixOS/nixos-hardware; 
 
 
 ![screenshot](nixos_neofetch.png?raw=true)
+
+## Proper struct
+
+![screenshot](nd.png?raw=true)
