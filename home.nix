@@ -26,10 +26,10 @@ in
 	abiword
 	arc-theme
 	ast-grep
-        brightnessctl
-     	dunst
+    brightnessctl
+  	dunst
 	fd
-     	feh
+   	feh
 	fzf
   	gcc
 	github-cli
@@ -38,7 +38,7 @@ in
 	gmrun
 	haskell-language-server
 	imagemagick
-     	jgmenu
+   	jgmenu
 	kitty
 	lazygit
 	lua51Packages.lua
