@@ -26,8 +26,9 @@ in
 	abiword
 	arc-theme
 	ast-grep
-    brightnessctl
+    	brightnessctl
   	dunst
+	emacs
 	fd
    	feh
 	fzf
@@ -50,6 +51,7 @@ in
   	nodejs
 	papirus-icon-theme
   	pcmanfm
+	ranger
 	redshift
   	ripgrep
   	rofi
@@ -63,6 +65,7 @@ in
 	xautolock
 	xcompmgr
 	xmobar
+	zathura
   ];
 
     xdg.configFile = builtins.mapAttrs (name: subpath: {
@@ -71,14 +74,14 @@ in
     }) configs;
 
   imports = [
+    ./modules/nh.nix
     ./modules/suckless.nix
   ];
 
   programs.bash = {
     enable = true;
     shellAliases = {
-      btw = "echo i use nixos, btw";
-      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-btw";
+      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#loki-btw";
     };
   };
 }

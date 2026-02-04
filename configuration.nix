@@ -6,7 +6,7 @@
 
   boot.loader.grub.enable = true; boot.loader.grub.device = "/dev/sda";
 
-  networking.hostName = "nixos-btw";
+  networking.hostName = "loki-btw";
 
   networking.networkmanager.enable = true;
 
@@ -16,20 +16,24 @@
     keyMap = "pt-latin1";
   };
 
-  services.displayManager.ly.enable = true; services.xserver = {
-	enable = true; windowManager.qtile = {
-		enable = true; extraPackages = python3Packages: with python3Packages; [
+  services.displayManager.ly.enable = true; 
+  services.xserver = {
+	enable = true; 
+	windowManager.qtile = {
+		enable = true; 
+		extraPackages = python3Packages: with python3Packages; [
 			qtile-extras
-		];
+			];
 	};
-	windowManager.awesome.enable = true; windowManager.xmonad = { enable = true; enableContribAndExtras = true; extraPackages = hpkgs: [
-          hpkgs.xmonad hpkgs.xmonad-extras hpkgs.xmonad-contrib
-        ];
-      };
-	windowManager.dwm = { enable = true; package = pkgs.dwm.overrideAttrs {
-		src = ./config/dwm;
-	};
-      };
+	windowManager.oxwm.enable = true; 
+	windowManager.awesome.enable = true; 
+	windowManager.xmonad = { 
+		enable = true; 
+		enableContribAndExtras = true; 
+		extraPackages = hpkgs: [
+          		hpkgs.xmonad hpkgs.xmonad-extras hpkgs.xmonad-contrib
+        		];
+      	};
   };
   
 
