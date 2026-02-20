@@ -73,7 +73,7 @@ myLayout = spacingWithEdge 3 $ gaps [(U, 3)] $ emptyBSP ||| tiled ||| Mirror til
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawnOnce "feh --bg-fill ~/Wallpaper/Haskell2.png"
+  spawnOnce "feh --bg-fill ~/Wallpaper/wallhaven-8xk6oo.png"
   spawnOnce "synclient TapButton1=1"
   spawnOnce "synclient TapButton2=3"
   spawnOnce "synclient TapButton3=2"

@@ -38,7 +38,9 @@ in
 	ghostscript
 	gmrun
 	haskell-language-server
+	htop
 	imagemagick
+	imlib2
    	jgmenu
 	kitty
 	lazygit
@@ -46,6 +48,7 @@ in
 	luajitPackages.luarocks_bootstrap
 	neofetch
   	neovim
+	nextcloud-client
   	nil
   	nixpkgs-fmt
   	nodejs

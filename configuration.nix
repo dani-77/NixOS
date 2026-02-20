@@ -2,7 +2,7 @@
 
 { imports =
     [
-      ./hardware-configuration.nix ];
+    ./hardware-configuration.nix ];
 
   boot.loader.grub.enable = true; boot.loader.grub.device = "/dev/sda";
 
@@ -25,8 +25,15 @@
 			qtile-extras
 			];
 	};
+	windowManager.stumpwm.enable = true; 
 	windowManager.oxwm.enable = true; 
 	windowManager.awesome.enable = true; 
+	windowManager.dwm = {
+		enable = true;
+		package = pkgs.dwm.overrideAttrs {
+          	src = ./config/dwm;
+        };
+	};
 	windowManager.xmonad = { 
 		enable = true; 
 		enableContribAndExtras = true; 
@@ -55,6 +62,7 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.firefox.enable = true;
+  programs.slock.enable = true;
 
   fonts.packages = with pkgs; [ hack-font nerd-fonts.symbols-only nerd-fonts.iosevka nerd-fonts.jetbrains-mono font-awesome
   ];

@@ -165,7 +165,7 @@ workspaces = [
 ]
 
 
-groups = [ 
+groups = [
 	ScratchPad("alsamixer", [ DropDown("term", "xterm -e alsamixer", width=0.5, height=0.5, x=0.25, y=0.25, opacity=0.9),]),
 	ScratchPad("htop", [ DropDown("term", "xterm -e htop", width=0.5, height=0.5, x=0.25, y=0.25, opacity=0.9),]),
 	ScratchPad("nmtui", [ DropDown("term", "xterm -e nmtui", width=0.5, height=0.5, x=0.25, y=0.25, opacity=0.9),]),
@@ -188,7 +188,7 @@ layouts = [
      layout.Max(**layout_theme),
      layout.MonadTall(**layout_theme),
      layout.Tile(**layout_theme),
-     #layout.Stack(num_stacks=2, **layout_theme), 
+     #layout.Stack(num_stacks=2, **layout_theme),
      #layout.Matrix(**layout_theme),
      #layout.MonadWide(**layout_theme),
      #layout.RatioTile(**layout_theme),
@@ -227,10 +227,10 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-		widget.Wttr(**decoration_group, location={'Porto':'Porto'}),
+		#widget.Wttr(**decoration_group, location={'Porto':'Porto'}),
                 widget.Clock(**decoration_group, format=" %A, %d %B %Y %H:%M:%S %p"),
 		widget.Spacer(),
-		#widget.StatusNotifier(),
+		widget.StatusNotifier(),
 		widget.HDD(format=" {HDDPercent}%"),
 		widget.CPU(format="  {load_percent}%",
                 mouse_callbacks={'Button1': lazy.group['htop'].dropdown_toggle('term')}),
