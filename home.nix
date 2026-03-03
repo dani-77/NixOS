@@ -26,12 +26,14 @@ in
 	abiword
 	arc-theme
 	ast-grep
+	brave
     	brightnessctl
   	dunst
 	emacs
 	fd
    	feh
 	fzf
+	fuzzel
   	gcc
 	github-cli
 	gnumeric
@@ -63,6 +65,8 @@ in
 	stylua
 	tectonic
 	thunderbird
+	transmission_4-gtk
+	uget
 	unzip
 	vimPlugins.LazyVim
 	xautolock
