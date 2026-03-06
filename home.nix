@@ -28,6 +28,7 @@ in
 	ast-grep
 	brave
     	brightnessctl
+	claws-mail
   	dunst
 	emacs
 	fd
@@ -84,6 +85,20 @@ in
     ./modules/nh.nix
     ./modules/suckless.nix
   ];
+
+  gtk = {
+	enable = true;
+	
+	theme = {
+		name = "Arc-Dark";
+		package = pkgs.arc-theme;
+ 	};
+	
+	iconTheme = {
+		name = "Papirus-Dark";
+		package = pkgs.papirus-icon-theme;
+	};
+};
 
   programs.bash = {
     enable = true;

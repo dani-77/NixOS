@@ -60,7 +60,8 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-
+  
+  programs.dconf.enable = true;
   programs.firefox.enable = true;
   programs.slock.enable = true;
 
