@@ -1,4 +1,4 @@
-#l<h1 align=“center”>NixOS</h1>
+<h1 align=“center”>NixOS</h1>
 
 My config files for NixOS, tonybtw style.
 
