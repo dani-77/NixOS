@@ -1,5 +1,6 @@
-<h1 align=“center”>
-NixOS
+<h1 align="center">
+  <img src="logo.png" alt="d77 logo" width="160"><br>
+  NixOS
 </h1>
 
 My config files for NixOS, tonybtw style.
